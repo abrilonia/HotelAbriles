@@ -20,7 +20,6 @@ public class Hotel extends Hospederia{
     }
 
     public int adicional(){
-        //si es fumador y con desayuno, aumenta 30%
         int adicional = 0;
         if(this.getEsFumador().equals(true) && this.getConDesayuno().equals(true)){
             adicional=Math.round(this.subTotal()*30/100);

@@ -49,13 +49,9 @@ public abstract class MedioAlojamiento{
     }
 
     public int subTotal(){
-        //multiplica cantidad noches por valor base noche
-
         return this.getCantidadNoches()*getValorBaseNoche();
-
     }
     public int bonoDescuento(){
-        //descuenta 25% en temporada baja y 12.5% en temporada media
         int bonoDescuento=0;
         if(this.getTipoTemporada().equalsIgnoreCase("Temporada baja")){
             bonoDescuento=Math.round(this.subTotal()*25/100);

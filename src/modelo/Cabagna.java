@@ -20,13 +20,11 @@ public class Cabagna extends Hospederia{
     }
 
     public int incrementaValorBase(){
-        //Si la capacidad es mayor a 5, incrementa 18%
-        int incrementaValorBase = 0;
 
+        int incrementaValorBase = 0;
         if(this.getCapacidad()>5){
             incrementaValorBase= (int)Math.round(this.getValorBaseNoche()*0.18);
             setValorBaseNoche(getValorBaseNoche()+incrementaValorBase);
-
         }
         return incrementaValorBase;
     }

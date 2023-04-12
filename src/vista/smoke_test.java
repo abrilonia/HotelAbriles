@@ -5,7 +5,7 @@ import modelo.Carpa;
 import modelo.DatoCliente;
 import modelo.Hotel;
 
-public class App {
+public class smoke_test {
     public static void main(String[] args) {
         Hotel hotel1 = new Hotel(2,"Temporada baja", 20000, new DatoCliente("Abril","27654123-2"), 5, false,true);
         System.out.println("El subtotal es de: " + hotel1.subTotal());

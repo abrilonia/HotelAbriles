@@ -28,4 +28,12 @@ public abstract class Hospederia extends MedioAlojamiento {
     public void setEsFumador(Boolean esFumador) {
         this.esFumador = esFumador;
     }
+
+    @Override
+    public String toString() {
+        return "Hospederia{" +
+                "capacidad=" + capacidad +
+                ", esFumador=" + esFumador +
+                '}';
+    }
 }

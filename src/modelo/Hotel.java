@@ -31,4 +31,11 @@ public class Hotel extends Hospederia{
     public int valorACancelar() {
         return this.subTotal() + this.adicional() - this.bonoDescuento();
     }
+
+    @Override
+    public String toString() {
+        return " Hoteles {" + "nNoches: "+ getCantidadNoches() + ", temporada: " + getTipoTemporada() + ",\n valorNoche: "
++ getValorBaseNoche() + ", nombreCte: " + getDatoCliente().getNombreCliente() + ", rutCte: " + getDatoCliente().getRut() + ", capacidad: " + getCapacidad() + ", es fumador: " + getEsFumador() + ", conDesayuno= " + conDesayuno +
+                '}';
+    }
 }

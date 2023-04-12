@@ -24,13 +24,24 @@ public class Cabagna extends Hospederia{
         int incrementaValorBase = 0;
         if(this.getCapacidad()>5){
             incrementaValorBase= (int)Math.round(this.getValorBaseNoche()*0.18);
-            setValorBaseNoche(getValorBaseNoche()+incrementaValorBase);
         }
         return incrementaValorBase;
     }
 
     @Override
     public int valorACancelar() {
-        return this.subTotal() - this.bonoDescuento();
+        double factor = 1;
+        if(this.getCapacidad()>5){
+            factor=1.18;
+        }
+        return (int)(this.subTotal()*factor - this.bonoDescuento()*factor);
+
+    }
+
+    @Override
+    public String toString() {
+        return " Cabagnas {" + "nNoches: "+ getCantidadNoches() + ", temporada: " + getTipoTemporada() + ",\n valorNoche: "
+                + getValorBaseNoche() + ", nombreCte: " + getDatoCliente().getNombreCliente() + " rutCte: " + getDatoCliente().getRut() +
+                ", capacidad: " + getCapacidad() + ", esFumador: " + getEsFumador() + ", chimenea: " + chimenea + '}';
     }
 }

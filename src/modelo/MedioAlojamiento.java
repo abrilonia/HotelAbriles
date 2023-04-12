@@ -64,4 +64,13 @@ public abstract class MedioAlojamiento{
 
     public abstract int valorACancelar();
 
+    @Override
+    public String toString() {
+        return "MedioAlojamiento{" +
+                "cantidadNoches=" + cantidadNoches +
+                ", tipoTemporada='" + tipoTemporada + '\'' +
+                ", valorBaseNoche=" + valorBaseNoche +
+                ", datoCliente=" + datoCliente +
+                '}';
+    }
 }

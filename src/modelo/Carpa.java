@@ -24,4 +24,12 @@ public class Carpa extends MedioAlojamiento{
     public int valorACancelar() {
         return this.subTotal() - this.bonoDescuento();
     }
+
+    @Override
+    public String toString() {
+        return " Carpas {" + " nNoches: " + getCantidadNoches() + ", temporada: " + getTipoTemporada() + ",\n valorNoche: "
+                + getValorBaseNoche() + ", nombreCte: " + getDatoCliente().getNombreCliente() + ", rutCte: "
+                + getDatoCliente().getRut() + ", cantidadPersonas=" + cantidadPersonas +
+                '}';
+    }
 }

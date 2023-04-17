@@ -28,7 +28,7 @@ public class MiHotel {
     public int buscaRut(String rutCliente){
         for(int i=0; i<elHotel.size(); i++){
             if(elHotel.get(i).getDatoCliente().getRut().compareToIgnoreCase(rutCliente)==0){
-                return 0;
+                return i;
             }
         }
         return -1;
@@ -54,26 +54,34 @@ public class MiHotel {
         } return "El rut del cliente: " + rutCliente + ", no está asociado a ningún alojamiento";
     }
 
-    public String totalAdicional(String rutCliente){
-        Hotel hotel=null;
-        for (int i=0; i<elHotel.size(); i++){
-            if (elHotel.get(i).getDatoCliente().getRut().compareToIgnoreCase(rutCliente)==0 && elHotel.get(i) instanceof Hotel){
-            hotel = (Hotel) elHotel.get(i);
-            return "El total adicional es de: " + hotel.adicional();
+    public String totalAdicional() {
+        Hotel hotel = null;
+        int total=0;
+        if (elHotel.size() > 0) {
+            for (int i = 0; i < elHotel.size(); i++) {
+                if (elHotel.get(i) instanceof Hotel) {
+                    hotel = (Hotel) elHotel.get(i);
+                    total=total+hotel.adicional();
+                }
+            }
+            return "El total adicional es de: " + total;
         }
-
-    }return "A este cliente no le corresponde un adicional o no está registrado";
+        return "No hay registros de alojamientos";
     }
 
-    public String bonoDescuentos(String rutCliente){
-        for (int i=0; i<elHotel.size(); i++){
+    public String bonoDescuentos(){
+        int total=0;
+        Hotel hotel=null;
+        Carpa carpa=null;
+        Cabagna cabagna=null;
+        if (elHotel.size() > 0) {
+            for (int i = 0; i < elHotel.size(); i++) {
+              total=total+elHotel.get(i).bonoDescuento();
+                }
 
-            if(elHotel.get(i).getDatoCliente().getRut().compareToIgnoreCase(rutCliente)==0){
-
-                return "El bono descuento es de: " + elHotel.get(i).bonoDescuento();
-            }
-
-        } return "El rut del cliente: " + rutCliente + ", no está registrado o ingresó algún dato incorrecto";
+            return "El total de bono descuento es de: " + total;
+        }
+        return "No hay registros de alojamientos";
 
     }
 
@@ -103,8 +111,8 @@ public class MiHotel {
 
     public String imprimeCarpa() {
         Carpa carpa = null;
-        for (int i = 0; i < elHotel.size(); i++) { //iterar en la colección
-            if (elHotel.get(i) instanceof Carpa) { //es un calzado de mujer
+        for (int i = 0; i < elHotel.size(); i++) {
+            if (elHotel.get(i) instanceof Carpa) {
                 carpa = (Carpa) elHotel.get(i);
             }
         }
@@ -112,8 +120,8 @@ public class MiHotel {
     }
     public String imprimeHotel() {
         Hotel hotel = null;
-        for (int i = 0; i < elHotel.size(); i++) { //iterar en la colección
-            if (elHotel.get(i) instanceof Hotel) { //es un calzado de mujer
+        for (int i = 0; i < elHotel.size(); i++) {
+            if (elHotel.get(i) instanceof Hotel) {
                 hotel = (Hotel) elHotel.get(i);
             }
         }
@@ -121,8 +129,8 @@ public class MiHotel {
     }
     public String imprimeCabagna() {
         Cabagna cabagna = null;
-        for (int i = 0; i < elHotel.size(); i++) { //iterar en la colección
-            if (elHotel.get(i) instanceof Cabagna) { //es un calzado de mujer
+        for (int i = 0; i < elHotel.size(); i++) {
+            if (elHotel.get(i) instanceof Cabagna) {
                 cabagna = (Cabagna) elHotel.get(i);
             }
         }

@@ -16,9 +16,11 @@ public class App {
         MiHotel elHotel = new MiHotel(new ArrayList<>());
         String rut;
 
-        Hotel hotel = new Hotel(2, "Temporada baja", 20000, new DatoCliente("Maria", "27154876-2"), 1, true, true);
+        /*Hotel hotel = new Hotel(2, "Temporada baja", 20000, new DatoCliente("Maria", "27154876-2"), 1, true, true);
 
+        Hotel hotel2 = new Hotel(2, "Temporada media", 25000, new DatoCliente("Maria2", "27154876-8"), 1, true, true);
         elHotel.ingresaHotel(hotel);
+        elHotel.ingresaHotel(hotel2);*/
 
         int opcion;
         do {
@@ -66,27 +68,26 @@ public class App {
                             String caso;
                             boolean fumador = false;
                             do {
-                                System.out.println("Indique si es fumador, * y * si lo es, * x * si no lo es");
-
+                                System.out.println("Indique si es fumador, (s) sí, (n) no");
                                 caso = Leer.dato();
 
                                 switch (caso) {
-                                    case "y":
+                                    case "s":
                                         fumador = true;
                                         break;
-                                    case "x":
+                                    case "n":
                                         fumador = false;
                                         break;
                                 }
 
-                            } while (caso.compareToIgnoreCase("y") != 0 && caso.compareToIgnoreCase("x") != 0);
+                            } while (caso.compareToIgnoreCase("s") != 0 && caso.compareToIgnoreCase("n") != 0);
 
 
                             if (tipoAloja.equalsIgnoreCase("b")) {
                                 String desa;
                                 boolean desayuno = false;
                                 do {
-                                    System.out.println("¿Incluye desayuno? Marque * s * para sí y * n * para no");
+                                    System.out.println("¿Incluye desayuno? Marque (s) sí y (n) no");
                                     desa = Leer.dato();
 
                                     switch (desa) {
@@ -103,8 +104,23 @@ public class App {
                                 elHotel.ingresaHotel(new Hotel(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rutCte), capacidad, fumador, desayuno));
                                 System.out.println("Alojamiento creado con éxito\n" + elHotel.imprimeHotel());
                             } else {
-                                System.out.println("¿Tiene chimenea? Escriba true para sí, y false para no");
-                                boolean chimenea = Leer.datoBoolean();
+                                String opc;
+                                boolean chimenea = false;
+                                do {
+                                    System.out.println("¿Tiene chimenea? Marque (s) sí y (n) no");
+                                    opc = Leer.dato();
+
+                                    switch (opc) {
+                                        case "s":
+                                            chimenea = true;
+                                            break;
+                                        case "n":
+                                            chimenea = false;
+                                            break;
+                                    }
+
+                                }while (opc.compareToIgnoreCase("s")!=0 && opc.compareToIgnoreCase("n")!=0);
+
                                 elHotel.ingresaCabagna(new Cabagna(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rutCte), capacidad, fumador, chimenea));
                                 System.out.println("Alojamiento ingresado con éxito\n" + elHotel.imprimeCabagna());
                             }
@@ -117,22 +133,21 @@ public class App {
 
 
                 case 2:
-
-                    System.out.println("Mostrar alojamientos---->\n" + elHotel.toString() );
-
+                    if (elHotel.getElHotel().size()>0){
+                        System.out.println("Mostrar alojamientos---->\n" + elHotel.toString() );
+                    }else {
+                        System.out.println("No hay registros de alojamientos");
+                    }
                     break;
                 case 3:
                     rut=pedirRut();
                     System.out.println(elHotel.imprimeDatosCliente(rut));
-
                     break;
                 case 4:
-                    rut=pedirRut();
-                    System.out.println( elHotel.totalAdicional(rut));
+                    System.out.println( elHotel.totalAdicional());
                     break;
                 case 5:
-                    rut=pedirRut();
-                    System.out.println(elHotel.bonoDescuentos(rut));
+                    System.out.println(elHotel.bonoDescuentos());
                     break;
                 case 6:
                     System.out.println("La cantidad de alojamientos es de: " + elHotel.getElHotel().size());
@@ -146,7 +161,7 @@ public class App {
                     System.out.println(elHotel.incremento(rut));
             }
 
-        } while (opcion != 9); //repetir
+        } while (opcion != 9);
     }
 
 

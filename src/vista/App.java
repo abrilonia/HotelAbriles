@@ -44,8 +44,6 @@ public class App {
                         System.out.println("Ingrese el nombre del cliente");
                         String nombreCte = Leer.dato();
 
-                        System.out.println("Ingrese el rut del cliente (Ej: 123456789-1)");
-                        String rutCte = Leer.dato();
 
                         String tipoAloja;
                         do {
@@ -57,7 +55,7 @@ public class App {
                         if (tipoAloja.equalsIgnoreCase("a")) {
                             System.out.println("Ingrese la cantidad de personas");
                             int personasCarpa = Leer.datoInt();
-                            Carpa carpa = new Carpa(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rutCte), personasCarpa);
+                            Carpa carpa = new Carpa(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rut), personasCarpa);
 
                             elHotel.ingresaCarpa(carpa);
                             System.out.println("Alojamiento creado con éxito\n" + elHotel.imprimeCarpa());
@@ -101,7 +99,7 @@ public class App {
 
                                 }while (desa.compareToIgnoreCase("s")!=0 && desa.compareToIgnoreCase("n")!=0);
 
-                                elHotel.ingresaHotel(new Hotel(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rutCte), capacidad, fumador, desayuno));
+                                elHotel.ingresaHotel(new Hotel(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rut), capacidad, fumador, desayuno));
                                 System.out.println("Alojamiento creado con éxito\n" + elHotel.imprimeHotel());
                             } else {
                                 String opc;
@@ -121,7 +119,7 @@ public class App {
 
                                 }while (opc.compareToIgnoreCase("s")!=0 && opc.compareToIgnoreCase("n")!=0);
 
-                                elHotel.ingresaCabagna(new Cabagna(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rutCte), capacidad, fumador, chimenea));
+                                elHotel.ingresaCabagna(new Cabagna(nNoches, temporada, valorBase, new DatoCliente(nombreCte, rut), capacidad, fumador, chimenea));
                                 System.out.println("Alojamiento ingresado con éxito\n" + elHotel.imprimeCabagna());
                             }
 

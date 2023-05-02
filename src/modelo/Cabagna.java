@@ -24,17 +24,21 @@ public class Cabagna extends Hospederia{
         int incrementaValorBase = 0;
         if(this.getCapacidad()>5){
             incrementaValorBase= (int)Math.round(this.getValorBaseNoche()*0.18);
+            setValorBaseNoche(incrementaValorBase + getValorBaseNoche());
         }
         return incrementaValorBase;
     }
 
     @Override
     public int valorACancelar() {
-        double factor = 1;
+        /*double factor = 1;
         if(this.getCapacidad()>5){
             factor=1.18;
         }
-        return (int)(this.subTotal()*factor - this.bonoDescuento()*factor);
+        return (int)(this.subTotal()*factor - this.bonoDescuento()*factor);*/
+
+        //incrementaValorBase();
+        return this.subTotal() - this.bonoDescuento();
 
     }
 
